@@ -60,6 +60,17 @@ class ClipboardAdmin(admin.ModelAdmin):
         url_patterns.extend(urls)
         return url_patterns
 
+    def get_model_perms(self, *args, **kwargs):
+        """
+        It seems this is only used for the list view. NICE :-)
+        """
+        return {
+            'add': False,
+            'change': False,
+            'delete': False,
+        }
+
+
 @csrf_exempt
 def ajax_upload(request, folder_id=None):
     """
@@ -147,13 +158,3 @@ def ajax_upload(request, folder_id=None):
     except UploadException as e:
         return HttpResponse(json.dumps({'error': str(e)}),
                             **response_params)
-
-    def get_model_perms(self, request):
-        """
-        It seems this is only used for the list view. NICE :-)
-        """
-        return {
-            'add': False,
-            'change': False,
-            'delete': False,
-        }
