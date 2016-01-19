@@ -76,9 +76,13 @@
     .nav-button {
         display: inline-block;
         color: $btn-default-color;
-        font-size: 26px;
+        font-size: 22px;
+        line-height: 34px;
         vertical-align: top;
         margin: 0 10px;
+        span {
+            vertical-align: middle;
+        }
     }
     .nav-button-filter {
         position: relative;
@@ -110,6 +114,50 @@
 .navigator-tools {
     float: right;
     margin: 10px 10px 0 0;
+    .actions-wrapper {
+        float: right;
+        margin-bottom: 10px;
+        @media screen and (max-width: $screen-tablet) {
+            @include clearfix();
+            float: none;
+        }
+    }
+    .actions {
+        float: right;
+        display: none;
+        @media screen and (max-width: $screen-tablet) {
+            @include clearfix();
+            float: none;
+            margin-bottom: 10px;
+        }
+        .all,
+        .question,
+        .clear,
+        .action-counter {
+            font-size: $font-size-small;
+            line-height: 34px;
+            vertical-align: text-top;
+        }
+        .action-counter,
+        .all {
+            color: $gray-light;
+        }
+        .question,
+        .clear {
+            border-left: solid 1px $gray-lighter;
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+        &.action-selected {
+            display: block;
+        }
+    }
+
+    .dropdown-container {
+        @media screen and (max-width: $screen-tablet) {
+            float: left;
+        }
+    }
 }
 @media screen and (max-width: $screen-tablet) {
     .navigator-top-nav {
@@ -126,19 +174,22 @@
         }
         .dropdown-container .dropdown-menu {
             right: auto;
-            left: 0;
+            left: -130px;
         }
     }
 }
 // make sure that buttons break to new line on mobile view #677
 .navigator-button-wrapper {
-    display: inline-block;
+    text-align: right;
+    margin-bottom: 10px;
     @media screen and (max-width: $screen-tablet) {
         display: block;
-        margin-bottom: 10px;
-        .navigator-button {
-            margin-top: 10px;
-        }
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    @media screen and (min-width: $screen-desktop) {
+        float: right;
+        margin-left: 25px;
     }
 }
 .navigator-button {
@@ -192,7 +243,6 @@
 .dropdown-container {
     display: inline-block;
     position: relative;
-    top: 6px;
     vertical-align: top;
     .dropdown-menu {
         display: none;
@@ -200,9 +250,11 @@
         left: auto;
         label {
             display: block;
+            line-height: 20px !important;
             white-space: nowrap;
             text-transform: none;
-            padding: 0 10px;
+            padding: 0 10px !important;
+            margin: 0 !important;
         }
         input {
             position: relative;
@@ -244,6 +296,7 @@
     .dropdown-menu {
         right: auto;
         left: 0;
-        margin-top: -3px;
+        margin-top: -10px;
+        margin-right: 10px;
     }
 }
