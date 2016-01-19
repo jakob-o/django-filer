@@ -186,3 +186,4 @@ def ajax_upload(request, folder_id=None):
         return HttpResponse(json.dumps({'error': str(e)}),
                             status=500,
                             **response_params)
+    
